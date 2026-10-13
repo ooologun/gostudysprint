@@ -18,20 +18,21 @@ python -m unittest
 
 ## How it's laid out
 
-| File | What it does |
-|---|---|
-| `main.py` | The menu loop you interact with |
-| `storage.py` | Loads and saves the JSON data file |
-| `features/core.py` | The deck, the quiz loop, and small helpers |
-| `features/reports.py` | Summary reports (half-built - finish it via a ticket) |
-| `data/studysprint.json` | The card deck and score history |
-| `tests/test_core.py` | Example tests to copy from |
+| File                    | What it does                                          |
+| ----------------------- | ----------------------------------------------------- |
+| `main.py`               | The menu loop you interact with                       |
+| `storage.py`            | Loads and saves the JSON data file                    |
+| `features/core.py`      | The deck, the quiz loop, and small helpers            |
+| `features/reports.py`   | Summary reports (half-built - finish it via a ticket) |
+| `data/studysprint.json` | The card deck and score history                       |
+| `tests/test_core.py`    | Example tests to copy from                            |
 
 ## Team
 
 <!-- Add yourself here on your Git lesson: - Your Name (role) -->
 
 - Oye(vesho)
+- Matt
 
 ## Where to start
 
