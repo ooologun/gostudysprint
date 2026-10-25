@@ -17,6 +17,14 @@ class TestCore(unittest.TestCase):
         self.assertEqual(card["id"], 2)
         self.assertEqual(len(data["cards"]), 2)
 
+    def test_streak(self):
+        results = [False, True, True, True, False]
+        self.assertEqual(core.best_streak(results), 3)
+
+    def test_double_streak(self):
+        results = [True, True, False, True, True, True, True, False]
+        self.assertEqual(core.best_streak(results), 4)
+
 
 if __name__ == "__main__":
     unittest.main()

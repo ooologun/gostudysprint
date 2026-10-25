@@ -53,3 +53,20 @@ def percent_correct(score, total):
     if total == 0:
         return 0
     return round(100 * score / total)
+
+def best_streak(results):
+    # assume results is a list of booleans
+
+    start_streak = False
+    count = 0
+    max_count = 0
+    for result in results:
+        if result:
+            count += 1
+            if not start_streak:
+                start_streak = True
+        if not result and start_streak:
+            max_count = max(max_count, count)
+            count = 0
+
+    return max_count
