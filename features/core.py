@@ -37,14 +37,6 @@ def cards_by_category(cards, category):
     return [c for c in cards if c["category"] == category]
 
 
-def count_by_category(cards):
-    counts = {}
-    for card in cards:
-        name = card["category"]
-        counts[name] = counts.get(name, 0) + 1
-    return counts
-
-
 def top_card(cards):
     return cards[len(cards) - 1]
 

@@ -54,7 +54,7 @@ def main():
         elif choice == "5":
             print(core.top_card(core.get_cards(data))["question"])
         elif choice == "6":
-            print(core.count_by_category(core.get_cards(data)))
+            print(reports.category_report(core.get_cards(data)))
         elif choice == "7":
             print(reports.deck_summary(data))
         else:
