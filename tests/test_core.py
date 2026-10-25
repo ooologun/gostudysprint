@@ -33,6 +33,9 @@ class TestCore(unittest.TestCase):
         categories = {"syntax": 4, "types": 2, "lists": 1, "io": 1, "general": 2}
 
         self.assertEqual(reports.category_report(cards), categories)
+
+    def test_category_breakdown_empty(self):
+        self.assertEqual(reports.category_report([]), {})
         
 
 
