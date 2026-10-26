@@ -25,6 +25,10 @@ class TestCore(unittest.TestCase):
         results = [True, True, False, True, True, True, True, False]
         self.assertEqual(core.best_streak(results), 4)
 
+    def test_score(self):
+        results = [True, True, False, True, False]
+        self.assertEqual(core.score(results), 3)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -10,14 +10,22 @@ def check_answer(card, guess):
 
 
 def run_quiz(cards, ask=input, show=print):
-    score = 0
+    results = []
     for card in cards:
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
-            score += 1
+            results.append(True)
         else:
             show("Not quite. The answer was: " + card["answer"])
+            results.append(False)
+    return results
+
+def score(results):
+    score = 0
+    for result in results:
+        if result:
+            score += 1
     return score
 
 
