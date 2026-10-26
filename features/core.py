@@ -6,19 +6,30 @@ def get_cards(data):
 
 
 def check_answer(card, guess):
+    '''Checks to see if the user's response matches the stored correct answer.'''
     return guess.strip().lower() == card["answer"].strip().lower()
+
+def review_missed(cards,results):
+    for r in results:
+        if results[r] == False:
+            print(r)
 
 
 def run_quiz(cards, ask=input, show=print):
     score = 0
+    results = []
     for card in cards:
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
+            results.append(True)
             score += 1
         else:
             show("Not quite. The answer was: " + card["answer"])
+            results.append(False)
+    #review_missed(cards,results)
     return score
+    
 
 
 def add_card(data, question, answer, category="general"):
