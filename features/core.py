@@ -6,6 +6,7 @@ def get_cards(data):
 
 
 def check_answer(card, guess):
+    """Check to see if user's answer matches the stored question answer."""
     return guess.strip().lower() == card["answer"].strip().lower()
 
 
