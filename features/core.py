@@ -11,14 +11,22 @@ def check_answer(card, guess):
 
 
 def run_quiz(cards, ask=input, show=print):
-    score = 0
+    results = []
     for card in cards:
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
-            score += 1
+            results.append(True)
         else:
             show("Not quite. The answer was: " + card["answer"])
+            results.append(False)
+    return results
+
+def score(results):
+    score = 0
+    for result in results:
+        if result:
+            score += 1
     return score
 
 
@@ -54,3 +62,20 @@ def percent_correct(score, total):
     if total == 0:
         return 0
     return round(100 * score / total)
+
+def best_streak(results):
+    # assume results is a list of booleans
+
+    start_streak = False
+    count = 0
+    max_count = 0
+    for result in results:
+        if result:
+            count += 1
+            if not start_streak:
+                start_streak = True
+        if not result and start_streak:
+            max_count = max(max_count, count)
+            count = 0
+
+    return max_count
