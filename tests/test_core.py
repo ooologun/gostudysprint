@@ -37,6 +37,17 @@ class TestCore(unittest.TestCase):
     def test_category_breakdown_empty(self):
         self.assertEqual(reports.category_report([]), {})
         
+    def test_streak(self):
+        results = [False, True, True, True, False]
+        self.assertEqual(core.best_streak(results), 3)
+
+    def test_double_streak(self):
+        results = [True, True, False, True, True, True, True, False]
+        self.assertEqual(core.best_streak(results), 4)
+
+    def test_score(self):
+        results = [True, True, False, True, False]
+        self.assertEqual(core.score(results), 3)
 
 
 if __name__ == "__main__":

@@ -34,10 +34,12 @@ def main():
             break
         elif choice == "1":
             cards = core.get_cards(data)
-            score = core.run_quiz(cards)
+            results = core.run_quiz(cards)
+            score = core.score(results)
             total = len(cards)
             print("You scored " + str(score) + "/" + str(total) +
                   " (" + str(core.percent_correct(score, total)) + "%).")
+            print("Streak: ", core.best_streak(results))
         elif choice == "2":
             core.list_cards(core.get_cards(data))
         elif choice == "3":
