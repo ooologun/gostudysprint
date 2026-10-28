@@ -2,7 +2,7 @@
 
 import unittest
 
-from features import core
+from features import core, reports
 
 
 class TestCore(unittest.TestCase):
@@ -17,6 +17,26 @@ class TestCore(unittest.TestCase):
         self.assertEqual(card["id"], 2)
         self.assertEqual(len(data["cards"]), 2)
 
+    def test_category_breakdown(self):
+        cards = [
+            {"id": 1, "question": "q", "answer": "a", "category": "syntax"},
+            {"id": 2, "question": "q", "answer": "a", "category": "types"},
+            {"id": 3, "question": "q", "answer": "while", "category": "syntax"},
+            {"id": 4, "question": "q", "answer": "a", "category": "syntax"},
+            {"id": 5, "question": "q", "answer": "a", "category": "lists"},
+            {"id": 6, "question": "q", "answer": "a", "category": "syntax"},
+            {"id": 7, "question": "q", "answer": "a", "category": "types"},
+            {"id": 8, "question": "q", "answer": "a", "category": "io"},
+            {"id": 9, "question": "q", "answer": "a", "category": "general"},
+            {"id": 9, "question": "q", "answer": "a", "category": "general"},
+        ];
+        categories = {"syntax": 4, "types": 2, "lists": 1, "io": 1, "general": 2}
+
+        self.assertEqual(reports.category_report(cards), categories)
+
+    def test_category_breakdown_empty(self):
+        self.assertEqual(reports.category_report([]), {})
+        
     def test_streak(self):
         results = [False, True, True, True, False]
         self.assertEqual(core.best_streak(results), 3)
