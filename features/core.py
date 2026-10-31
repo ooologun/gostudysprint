@@ -9,11 +9,6 @@ def check_answer(card, guess):
     '''Checks to see if the user's response matches the stored correct answer.'''
     return guess.strip().lower() == card["answer"].strip().lower()
 
-def review_missed(cards,results):
-    for r in results:
-        if results[r] == False:
-            print(r)
-
 
 def run_quiz(cards, ask=input, show=print):
     score = 0
@@ -27,10 +22,25 @@ def run_quiz(cards, ask=input, show=print):
         else:
             show("Not quite. The answer was: " + card["answer"])
             results.append(False)
-    #review_missed(cards,results)
+    review_missed_cards(cards, results)  
     return score
-    
 
+    
+def review_missed_cards(cards,results):
+    wrong_ans = []
+    for index, correct in enumerate(results):
+        if not correct:
+            wrong_ans.append(cards[index])
+    if wrong_ans == []:
+        return wrong_ans
+    else:
+
+        print(f"You got {len(wrong_ans)} questions incorrect.")
+        print("REVIEW MODE:") 
+        run_quiz(wrong_ans)
+    return
+        
+            
 
 def add_card(data, question, answer, category="general"):
     new_id = max((c["id"] for c in data["cards"]), default=0) + 1
