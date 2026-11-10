@@ -16,3 +16,17 @@ release goes first. Keep each entry to what a user would notice.
 ```
 
 <!-- Your first real release note goes below this line. -->
+
+## v1.0 - 2026-11-09
+
+### Added
+- Added a review missed cards feature to help students practice questions they answered incorrectly.
+- Added automated unit tests to check core flashcard functions.
+
+### Fixed
+- Fixed a KeyError that caused the category breakdown feature to crash.
+- Fixed an IndexError that occurred when viewing the last flashcard.
+
+### Changed
+- Improved the reliability of StudySprint's flashcard features.
+- Updated the README with instructions for running the application and its tests.

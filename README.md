@@ -60,3 +60,38 @@ test covers it, and the docs reflect the change. Never commit straight to
 1. Read **[docs/README.md](docs/README.md)** and add yourself to the Team list.
 2. Pick a ticket from `tickets/` or the Issues tab.
 3. Branch, build, test, open the pull request.
+## Features
+
+StudySprint is a Python flashcard application that helps students study and review questions.
+
+Current features include:
+- Taking quizzes and viewing scores
+- Adding and listing flashcards
+- Studying flashcards by category
+- Viewing the last flashcard
+- Viewing category breakdowns
+- Viewing deck summaries
+
+## Running StudySprint
+
+Run the application from the terminal:
+
+```bash
+python main.py
+```
+
+Follow the menu prompts to use the application.
+
+## Testing
+
+Run the automated tests using:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+These tests help identify bugs and check that existing features continue working.
+
+## Future Improvements
+
+Future updates may include more flashcard features, additional automated tests, and improvements to the user experience.
