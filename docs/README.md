@@ -38,3 +38,13 @@ python -m unittest
 Pick a ticket from the `tickets/` folder (or the Issues tab once your section
 repo exists). Read `CONTRIBUTING.md` for the Definition of Done every pull
 request has to meet.
+## Lesson 12 — Average Score Tests
+
+Added unit tests for the `average_score(data)` function in `features/reports.py`.
+
+The tests verify that:
+- A normal score history returns the correct average.
+- An empty history returns `0.0`.
+- Multiple scores are averaged correctly.
+
+Tests can be run using `python -m unittest discover -s tests -v`.
