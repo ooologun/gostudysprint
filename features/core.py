@@ -53,3 +53,12 @@ def percent_correct(score, total):
     if total == 0:
         return 0
     return round(100 * score / (total - 1))
+
+def review_missed(cards, results):
+    missed_cards = []
+
+    for card, result in zip(cards, results):
+        if result is False:
+            missed_cards.append(card)
+
+    return missed_cards
