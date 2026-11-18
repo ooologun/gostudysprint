@@ -34,6 +34,22 @@ def score(results):
             score += 1
     return score
 
+    
+def review_missed_cards(cards,results):
+    wrong_ans = []
+    for index, correct in enumerate(results):
+        if not correct:
+            wrong_ans.append(cards[index])
+    if wrong_ans == []:
+        return wrong_ans
+    else:
+
+        print(f"You got {len(wrong_ans)} questions incorrect.")
+        print("REVIEW MODE:") 
+        run_quiz(wrong_ans)
+    return
+        
+            
 
 def add_card(data, question, answer, category="general"):
     new_id = max((c["id"] for c in data["cards"]), default=0) + 1
