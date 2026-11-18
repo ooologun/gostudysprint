@@ -6,23 +6,32 @@ def get_cards(data):
 
 
 def check_answer(card, guess):
-    '''Checks to see if the user's response matches the stored correct answer.'''
+    """Check to see if user's answer matches the stored question answer."""
     return guess.strip().lower() == card["answer"].strip().lower()
 
 
 def run_quiz(cards, ask=input, show=print):
-    score = 0
     results = []
+    answered = 0
+    total = len(cards)
     for card in cards:
+        progress_bar(answered, total)
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
             results.append(True)
-            score += 1
         else:
             show("Not quite. The answer was: " + card["answer"])
             results.append(False)
-    review_missed_cards(cards, results)  
+        answered += 1
+    progress_bar(answered, total)
+    return results
+
+def score(results):
+    score = 0
+    for result in results:
+        if result:
+            score += 1
     return score
 
     
@@ -58,14 +67,6 @@ def cards_by_category(cards, category):
     return [c for c in cards if c["category"] == category]
 
 
-def count_by_category(cards):
-    counts = {}
-    for card in cards:
-        name = card["category"]
-        counts[name] = counts.get(name, 0) + 1
-    return counts
-
-
 def top_card(cards):
     return cards[len(cards) - 1]
 
@@ -74,3 +75,32 @@ def percent_correct(score, total):
     if total == 0:
         return 0
     return round(100 * score / total)
+
+def best_streak(results):
+    # assume results is a list of booleans
+
+    start_streak = False
+    count = 0
+    max_count = 0
+    for result in results:
+        if result:
+            count += 1
+            if not start_streak:
+                start_streak = True
+        if not result and start_streak:
+            max_count = max(max_count, count)
+            count = 0
+
+    return max_count
+
+def progress_bar(answered, total):
+    done = int(((answered / total) * 10))
+    bar = "[]"
+    if answered == 0:
+        bar = "[" + "-" * 10 + "]" + " "+ str(answered) + "/" + str(total)
+    elif answered == total:
+        bar = "[" + "#" * 10 + "]" + " "+ str(answered) + "/" + str(total)
+    else:
+        bar = "[" + "#" * done + "-" * (10 - done) + "]" + " " + str(answered) + "/" + str(total)
+    print(bar)
+    return bar
