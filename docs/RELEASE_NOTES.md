@@ -16,7 +16,11 @@ release goes first. Keep each entry to what a user would notice.
 ```
 
 <!-- Your first real release note goes below this line. -->
+## v1.0 - 2026-11-10
 
+### Added
+- Added a progress bar that shows students how far into the quiz questions they are.
+  
 ## v1.0 - 2026-11-09
 
 ### Added
