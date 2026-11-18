@@ -12,7 +12,10 @@ def check_answer(card, guess):
 
 def run_quiz(cards, ask=input, show=print):
     results = []
+    answered = 0
+    total = len(cards)
     for card in cards:
+        progress_bar(answered, total)
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
@@ -20,6 +23,8 @@ def run_quiz(cards, ask=input, show=print):
         else:
             show("Not quite. The answer was: " + card["answer"])
             results.append(False)
+        answered += 1
+    progress_bar(answered, total)
     return results
 
 def score(results):
@@ -71,3 +76,15 @@ def best_streak(results):
             count = 0
 
     return max_count
+
+def progress_bar(answered, total):
+    done = int(((answered / total) * 10))
+    bar = "[]"
+    if answered == 0:
+        bar = "[" + "-" * 10 + "]" + " "+ str(answered) + "/" + str(total)
+    elif answered == total:
+        bar = "[" + "#" * 10 + "]" + " "+ str(answered) + "/" + str(total)
+    else:
+        bar = "[" + "#" * done + "-" * (10 - done) + "]" + " " + str(answered) + "/" + str(total)
+    print(bar)
+    return bar
